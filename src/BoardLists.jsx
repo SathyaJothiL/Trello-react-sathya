@@ -20,8 +20,8 @@ const BoardLists = () => {
         navigate(`/boards/${boardId}`)
         
     }
-    function handleCreateBoard(){
-        createBoard('newlioefoekfkef')
+    function handleCreateBoard(boardName){
+        createBoard(boardName)
         .then(data=>{
             console.log(data);
             console.log('posted');

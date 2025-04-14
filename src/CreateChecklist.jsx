@@ -31,7 +31,7 @@ const CreateChecklist = ({handleAddList}) => {
   }
   return (
     <div>
-      {!isEditing ? (
+      {isEditing ? (
         <Button
           sx={{
             backgroundColor: "rgba(255,255,255,0.24)",

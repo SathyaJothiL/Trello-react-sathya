@@ -1,3 +1,4 @@
+import { Login } from "@mui/icons-material";
 import axios from "axios"
 
 const api_key = import.meta.env.VITE_API_KEY
@@ -58,5 +59,22 @@ export function getCardsInList(listId){
     .catch(err=>{
         console.log(err.message);
         
+    })
+}
+
+export function deleteCard(cardId){
+    return axios.delete(`https://api.trello.com/1/cards/${cardId}`,{
+        params:{
+            key:api_key,
+            token:api_token,
+        }
+    })
+    .then(response=>{
+        console.log("Card deleted successfully");
+        console.log(response.data);
+        return response.data
+    })
+    .catch(err=>{
+        console.log(err.message);
     })
 }

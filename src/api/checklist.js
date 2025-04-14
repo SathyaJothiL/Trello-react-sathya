@@ -17,6 +17,7 @@ export function createChecklist(cardId,name){
     .then(response=>{
         console.log('Checlist created successfully');
         console.log(response);
+        return response.data
     })
     .catch(err=>{
         console.log(err.message)
@@ -40,4 +41,23 @@ export function getChecklists(cardId){
     .catch(err=>{
         console.log(err.message)
     })
+}
+
+export function deleteChecklists(checkId){
+    console.log(checkId,'checkId');
+    return axios.delete(`https://api.trello.com/1/checklists/${checkId}`,{
+        params:{
+            key:api_key,
+            token:api_token,
+        }
+    })
+    .then(response=>{
+        console.log(response.data);
+        console.log("Deleted checklist successfully");
+        return response.data
+    })
+    .catch(err=>{
+        console.log(err.message);
+    })
+    
 }

@@ -11,6 +11,12 @@ export function CreateSingleList(boardId,name){
             key:api_key,
             token:api_token,
         }
+    }).then(response=>{
+        return response.data
+    })
+    .catch(err=>{
+        console.log(err.message);
+        
     })
 }
 
@@ -28,5 +34,22 @@ export function UpdateListName(listId,name){
     .catch(err=>{
         console.log(err);
         
+    })
+}
+
+export function archiveList(listId){
+    return axios.put(`https://api.trello.com/1/lists/${listId}/closed`,null,{
+        params:{
+            key:api_key,
+            token:api_token,
+            value:true
+        }
+    })
+    .then(response=>{
+        console.log('list archived successfully'); 
+        return response.data
+    })
+    .catch(err=>{
+        console.log(err.message);
     })
 }

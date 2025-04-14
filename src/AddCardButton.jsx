@@ -8,7 +8,7 @@ const AddCardButton = ({handleIsEditing}) => {
                 sx={{
                   backgroundColor: "rgba(9,30,66,0.1)",
                   color: "white",
-                  width: "272px",
+                  width: "full",
                   display: "flex",
                   justifyContent: "start",
                   alignItems:'center',

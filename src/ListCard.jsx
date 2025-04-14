@@ -3,10 +3,12 @@ import * as React from "react";
 
 import AddCardButton from "./AddCardButton";
 import CreateCard from "./CreateCard";
-import { Card, CardContent, Stack, Typography, TextField } from "@mui/material";
+import { Card, CardContent, Stack, Typography, TextField, IconButton } from "@mui/material";
 import { UpdateListName } from "./api/list";
 
-const ListCard = ({ list, children, handleAddCard }) => {
+import MenuList from './MenuList.jsx'
+
+const ListCard = ({ list, children, handleAddCard,handleArchiveList }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isNameEdit, setIsNameEdit] = useState(false);
   const [listName,setListName] = useState(list.name)
@@ -28,17 +30,29 @@ const ListCard = ({ list, children, handleAddCard }) => {
     })
     e.target.value = "";
   }
+  
   return (
     <div>
       <div>
-        <Card sx={{ minWidth: 330, borderRadius: "0.6rem" }}>
-          <CardContent>
+        <Card sx={{ minWidth: 330, borderRadius: "0.6rem", padding:'1rem',margin:1 }}>
+          <div className="flex justify-end">
+          <MenuList
+          handleArchiveList={handleArchiveList}
+          list={list}
+          />
+          </div>
+          <CardContent
+          sx={{
+            display:'flex',
+            flexDirection:'column', 
+          }}
+          >
             {!isNameEdit ? (
               <Typography
 
                 variant="subtitle1"
                 fontWeight="bold"
-                sx={{ margin: 1,p:1 }}
+                sx={{ margin: 1 }}
                 onClick={(e) => handleDoubleClick(e)}
               >
                 {listName}
